@@ -28,10 +28,9 @@ If you get a "Script Error" message after connecting to the VDI, you can ignore 
 	```
 	2. Right Click on the screen 
 	3. Press `Print Preview`
-	4. Click on the `Printer` icon in the top left Then press `Find Printer...` Button
-		![[Pasted image 20260605014403.png]]
-	5. Now in the new opened Windows, Type `powershell` or `cmd` in the top file path Bar![[Pasted image 20260605014531.png]]
-	6. Now Finally we escaped the Virtual RDP and we can proceed with enumerating the system![[Pasted image 20260605014643.png]]
+	4. Click on the `Printer` icon in the top left Then press `Find Printer...` Button ![VDI printer dialog](images/vdi-printer-dialog.png)
+	5. Now in the new opened Windows, Type `powershell` or `cmd` in the top file path Bar ![Typing powershell in path bar](images/powershell-path-bar.png)
+	6. Now Finally we escaped the Virtual RDP and we can proceed with enumerating the system ![Shell as vdiuser](images/shell-vdiuser.png)
 
 # Flag - 1 (User `vdiuser`)
 - Using the powershell session we have, we can search for the flag file
@@ -64,7 +63,7 @@ RDP         10.1.6.165      3389   EC2AMAZ-0536LUM  [+] EC2AMAZ-0536LUM\svcuser:
 - Using the credentials for user `svcuser` we can rdp, and we also landed inside another sandboxed `RDP`, and the way to escape it is very similar to the first escape
 	1. we navigate to `Documents` 
 	2. Click on `Browse Local Files`
-	3. Type `powershell` in the top windows path bar![[Pasted image 20260605041322.png]]
+	3. Type `powershell` in the top windows path bar ![svcuser kiosk escape](images/svcuser-kiosk-escape.png)
 	4. Landed inside a `powershell` session as `svcuser` 
 - Now we can simply read the flag from `c:\users\svcuser\desktop\flag2.txt`
 
@@ -108,17 +107,17 @@ Logon ID: EC2AMAZ-0536LUM\dh_admin
 
 ```
 
-- Finally we can get the third flag![[Pasted image 20260605064745.png]]
+- Finally we can get the third flag ![flag3 captured](images/flag3-captured.png)
 
 
 # Flag - 4 (user `Administrator`)
-- one we landed at the `dh_admin` user we found `SeImpersonatePrivilege`![[Pasted image 20260605064908.png]]
+- one we landed at the `dh_admin` user we found `SeImpersonatePrivilege` ![SeImpersonatePrivilege](images/seimpersonate-privilege.png)
 ### Exploiting `SeImpersonatePrivilege` using [`SigmaPotato.exe`](https://github.com/tylerdotrar/SigmaPotato/releases/download/v1.2.6/SigmaPotato.exe)
 - using Sliver we can execute the `.NET` SigmaPotato.exe without transferring it to the remote target and getting blocked by Microsoft Defender using `execute-assembly`
 ```sliver
 execute-assembly -i ./SigmaPotato.exe "C:\Windows\System32\cmd.exe /c type C:\Users\administrator\desktop\flag4.txt"
 ```
-![[Pasted image 20260605065155.png]]
+![flag4 captured](images/flag4-captured.png)
 
 # Machine Summry
 
