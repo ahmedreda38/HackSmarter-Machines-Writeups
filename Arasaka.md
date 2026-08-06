@@ -138,7 +138,7 @@ SMB         10.1.141.190    445    DC01             [+] hacksmarter.local\alt.sv
 ```bash
 rusthound-ce -d hacksmarter.local  -f dc01.hacksmarter.local -u $USER -p  $PASS  -c All --zip
 ```
-- from this point we can Notice a clear path to Compromising the domain Admins by setting the `from` and `to` in the `pathfinder` tab ![[images/arasaka_bloodhound.png]]
+- from this point we can Notice a clear path to Compromising the domain Admins by setting the `from` and `to` in the `pathfinder` tab ![bloodhound path](images/arasaka_bloodhound.png)
 
 So the attack chain from that path is as follows:
 ```
